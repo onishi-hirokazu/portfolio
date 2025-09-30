@@ -1,0 +1,354 @@
+@charset "utf-8";
+
+:root{
+  --main-color: #243aff;
+  --sub-color: #d4d4d4;
+  --break-point: 960px;
+}
+
+
+
+/* ヘッダー */
+header{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* ハンバーガーメニューの三本線 */
+
+#drawer-navigation{
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.drawer-line{
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #000000;
+  transition: .5s;
+}
+
+#line1{
+  top: 0;
+}
+
+#line2{
+  top: 12.5px;
+}
+
+#line3{
+  bottom: 0;
+}
+
+/* クリックした後、ドロワーナビが出現 */
+#navigation.in{
+  opacity: .9;
+  z-index: 998;
+}
+
+#drawer-navigation .line_1{
+  transform: translateY(12px) rotate(315deg);
+  background-color: #fff;
+}
+
+#drawer-navigation .line_2{
+  transform: translateX(-1000%);
+  opacity: 0;
+  width: 100px;
+  height: 0;
+  background-color: #fff;
+}
+
+#drawer-navigation .line_3{
+  transform: translateY(-12px) rotate(405deg);
+  background-color: #fff;
+}
+
+/* ハンバーガーメニューの中身 */
+#navigation{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  background-color: #000000;
+  z-index: -998;
+  transition: .5s;
+}
+
+#navigation ul{
+  padding-top: 90px;
+  text-align: center;
+}
+
+#navigation ul li{
+  list-style: none;
+  font-size: 24px;
+}
+
+#navigation ul li a{
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* ヒーロー */
+h1{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 8rem);
+  color: var(--sub-color);
+  background-color: var(--main-color);
+  mix-blend-mode: overlay;
+}
+
+/* トップスライダー */
+.slider-container-box{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -5;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -5;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* フェードの速度とアニメーション */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -5;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slider-container img{
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+
+/* 粉雪パーティクル */
+
+.snow{
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  animation: snowFall 10s linear;
+  z-index: -3;
+}
+
+@keyframes snowFall{
+  0%{
+    opacity: 0;
+    top: 0;
+    transform: translateX(5px);
+  }
+  10%{
+    opacity: 1;
+    transform: translateX(-5px);
+  }
+  20%{
+    transform: translateX(5px);
+  }
+  30%{
+    transform: translateX(-5px);
+  }
+  40%{
+    transform: translateX(5px);
+  }
+  50%{
+    transform: translateX(-5px);
+  }
+  60%{
+    transform: translateX(5px);
+  }
+  70%{
+    transform: translateX(-5px);
+  }
+  80%{
+    transform: translateX(5px);
+  }
+  90%{
+    opacity: 1;
+    transform: translateX(-5px);
+  }
+  100%{
+    opacity: 0;
+    top: 100vh;
+    transform: translateX(5px);
+  }
+}
+
+
+/* 背景に黒いマスク */
+.slider-container::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -4;
+}
+
+/* メイン */
+main{
+  height: 500vh;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgba(255, 255, 255, .2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+main section{
+  text-align: center;
+}
+
+.sec-01 h2, .sec-03 h2, .sec-05 h2{
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.sec-01 p, .sec-03 p, .sec-05 p{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.cottage{
+  width: 70%;
+  height: 50vh;
+  overflow: hidden;
+  margin: 30px auto;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.cottage1{
+  background-image: url(../image/cottage1.jpg);
+}
+
+.cottage2{
+  background-image: url(../image/cottage2.jpg);
+}
+
+.cottage3{
+  background-image: url(../image/cottage3.jpg);
+}
+
+/* 画像を文字で切り抜く */
+.sec-02, .sec-04{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cutout, .sec-02-text, .sec-04-text{
+  color: rgba(0,0,0,0);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-size: cover;
+  background-position: center;
+}
+
+.cutout{
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+}
+
+.sec-02-text, .sec-04-text{
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 800;
+}
+
+.cutout1, .sec-02-text{
+  background-image: url(../image/top-image1.jpg);
+}
+
+.cutout2, .sec-04-text{
+  background-image: url(../image/top-image2.jpg);
+}
+
+/* メインメディアクエリ */
+
+@media screen and (min-width:960px){
+  .sec-flex{
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sec-flex2{
+    flex-direction: row-reverse;
+  }
+
+  .sec-01 h2, .sec-03 h2, .sec-05 h2{
+    font-size: 4rem;
+  }
+
+  .cottage{
+    width: 70%;
+    height: 70vh;
+  }
+
+  .sec-flex p{
+    width: 50%;
+    padding: 15px;
+    line-height: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, .5);
+    border-left: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    box-shadow: 5px 5px 12.5px rgba(0,0,0,.5);
+    background-color: rgba(255,255,255,.1);
+    backdrop-filter: blur(10px);
+    transform: translate(-15%, 15%);
+  }
+
+  .sec-flex2 p{
+    transform: translate(15%, 15%);
+  }
+}
